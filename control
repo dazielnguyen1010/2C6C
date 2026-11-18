@@ -1,0 +1,9 @@
+Package: com.dzljb.2c6c
+Name: 2C6C
+Version: 3.0.0
+Architecture: iphoneos-arm64
+Description: Giao diện Liquid Glass iOS 26.7 (Dual-Backdrop Shader, Gyroscope Specular, Kéo giãn nút, Thư viện điều khiển & Nhạc kiểu mới).
+Maintainer: dzljb
+Author: dzljb
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader

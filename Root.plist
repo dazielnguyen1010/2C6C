@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>title</key>
+	<string>2C6C</string>
+	<key>items</key>
+	<array>
+		<!-- 1. Banner -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>DZLJB2C6CHeaderCell</string>
+		</dict>
+
+		<!-- 2. Kích hoạt chung -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Kích hoạt chung</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Bật tinh chỉnh 2C6C</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+
+		<!-- 3. Độ mờ Nền Trung tâm điều khiển (Xuyên thấu màn hình chính) -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Độ trong suốt nền Trung tâm điều khiển</string>
+			<key>footerText</key>
+			<string>Kéo "Độ mờ nền phía sau CC" về 0.0 để thấy rõ nét 100% hình nền và biểu tượng màn hình chính phía sau; kéo lên cao để làm mờ dịu.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ mờ nền phía sau CC (0 = Trong vắt)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.25</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>1.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>ccBackgroundBlur</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ phủ tối nền CC (0 = Giữ màu gốc)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.05</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>0.65</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>ccBackgroundDimAlpha</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+
+		<!-- 4. Chất liệu Kính Lỏng từng Nút bấm (Shader iOS 26.7) -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Chất liệu Kính Lỏng trên từng nút (Shader iOS 26.7)</string>
+			<key>footerText</key>
+			<string>Tuỳ chỉnh trực tiếp độ trong suốt, bán kính nhòe quang học và khúc xạ bẻ cong mép kính cho từng nút bấm.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Kiểu kính iOS 26.7</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>glassStyle</string>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>Kính Trong (Clear)</string>
+				<string>Kính Sương Mờ (Tinted)</string>
+			</array>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ nhòe kính trong nút (Blur Radius pt)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>14.0</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>32.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>buttonBlurRadius</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ phủ màu nền nút (0 = Trong suốt tuyệt đối)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.14</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>0.60</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>buttonTintAlpha</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>edgeRefractionEnabled</string>
+			<key>label</key>
+			<string>Khúc xạ bẻ cong mép kính 3D (Bezel Lensing)</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>gyroSpecularEnabled</string>
+			<key>label</key>
+			<string>Ánh sáng viền chạy theo góc nghiêng máy</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ sáng viền kính Specular</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.85</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>1.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>specularIntensity</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ dày viền kính (pt)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>1.25</real>
+			<key>min</key>
+			<real>0.5</real>
+			<key>max</key>
+			<real>2.5</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>rimBorderWidth</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Độ bo góc khối vuông lớn 2×2 (chuẩn 37pt)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>37.0</real>
+			<key>min</key>
+			<real>20.0</real>
+			<key>max</key>
+			<real>42.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>platterSquircleRadius</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+
+		<!-- 5. Bố cục & Module kiểu iOS 18 / 26 -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Bố cục, Khung Nhạc &amp; Kéo giãn nút</string>
+			<key>footerText</key>
+			<string>Bấm nút (+) ở góc trái trên để hiện tay nắm cong (◞) nằm ngoài viền cắt; kéo tay nắm để đổi kích thước mọi nút hoặc bấm "+ Thêm một điều khiển" để mở Thư viện điều khiển trực quan.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>enableEditResize</string>
+			<key>label</key>
+			<string>Cho phép kéo góc đổi hình dạng nút</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>modernMediaCard</string>
+			<key>label</key>
+			<string>Mục Nhạc kiểu mới (Ảnh bìa + Nút tai nghe)</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>modernConnectivityGrid</string>
+			<key>label</key>
+			<string>Cụm Kết nối kiểu mới (4 icon nhỏ góc dưới)</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>colorSliderGlyphs</string>
+			<key>label</key>
+			<string>Tô màu Vàng &amp; Xanh cho Độ sáng / Âm lượng</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>showTopActionButtons</string>
+			<key>label</key>
+			<string>Hiện nút kính (+) và Nguồn (⏻) trên đỉnh</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>showRightPageBar</string>
+			<key>label</key>
+			<string>Hiện thanh phân trang cạnh phải</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Khôi phục kích thước các nút về mặc định</string>
+			<key>action</key>
+			<string>resetModuleShapes</string>
+		</dict>
+
+		<!-- 6. Vật lý Đàn hồi & Rung -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Vật lý Nảy Đàn hồi &amp; Xúc giác</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>bouncePhysicsEnabled</string>
+			<key>label</key>
+			<string>Hiệu ứng nảy đàn hồi &amp; kéo dãn thanh trượt</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Cường độ lực nảy lò xo</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>1.05</real>
+			<key>min</key>
+			<real>0.5</real>
+			<key>max</key>
+			<real>1.5</real>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>bounceIntensity</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.dzljb.2c6c</string>
+			<key>key</key>
+			<string>hapticsEnabled</string>
+			<key>label</key>
+			<string>Phản hồi rung xúc giác (Haptics)</string>
+			<key>PostNotification</key>
+			<string>com.dzljb.2c6c/ReloadPrefs</string>
+		</dict>
+
+		<!-- 7. Hệ thống -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Hệ thống &amp; Thông tin</string>
+			<key>footerText</key>
+			<string>2C6C v3.0 • Phát triển bởi dzljb (com.dzljb.2c6c)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Áp dụng &amp; Khởi động lại màn hình (Respring)</string>
+			<key>action</key>
+			<string>respringDevice</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Đặt lại toàn bộ cài đặt gốc</string>
+			<key>action</key>
+			<string>resetPreferences</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSTitleValueCell</string>
+			<key>label</key>
+			<string>Nhà phát triển</string>
+			<key>get</key>
+			<string>authorCreditValue:</string>
+		</dict>
+	</array>
+</dict>
+</plist>
