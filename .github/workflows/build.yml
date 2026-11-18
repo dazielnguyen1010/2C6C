@@ -1,0 +1,82 @@
+name: Build 2C6C Rootless DEB
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fix folder structure and Makefiles
+        run: |
+          mkdir -p 2C6CPrefs/Resources
+          for f in DZLJB2C6CRootListController.h DZLJB2C6CRootListController.m entry.plist; do
+            [ -f "$f" ] && mv "$f" 2C6CPrefs/
+          done
+          for f in Info.plist Root.plist; do
+            [ -f "$f" ] && mv "$f" 2C6CPrefs/Resources/
+          done
+
+          cat << 'EOF' > Makefile
+          export THEOS_PACKAGE_SCHEME = rootless
+          TARGET := iphone:clang:latest:15.0
+          INSTALL_TARGET_PROCESSES = SpringBoard
+          ARCHS = arm64
+
+          include $(THEOS)/makefiles/common.mk
+
+          TWEAK_NAME = 2C6C
+
+          2C6C_FILES = Tweak.x DZLJBGlassShader.m DZLJBControlsGallery.m
+          2C6C_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unused-parameter -Wno-undeclared-selector
+          2C6C_FRAMEWORKS = UIKit QuartzCore CoreGraphics CoreMotion MediaPlayer Foundation
+
+          include $(THEOS_MAKE_PATH)/tweak.mk
+
+          SUBPROJECTS += 2C6CPrefs
+          include $(THEOS_MAKE_PATH)/aggregate.mk
+          EOF
+
+          cat << 'EOF' > 2C6CPrefs/Makefile
+          export THEOS_PACKAGE_SCHEME = rootless
+          TARGET := iphone:clang:latest:15.0
+          ARCHS = arm64
+
+          include $(THEOS)/makefiles/common.mk
+
+          BUNDLE_NAME = 2C6CPrefs
+
+          2C6CPrefs_FILES = DZLJB2C6CRootListController.m
+          2C6CPrefs_FRAMEWORKS = UIKit QuartzCore CoreGraphics Foundation
+          2C6CPrefs_PRIVATE_FRAMEWORKS = Preferences
+          2C6CPrefs_INSTALL_PATH = /Library/PreferenceBundles
+          2C6CPrefs_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
+
+          include $(THEOS_MAKE_PATH)/bundle.mk
+
+          internal-stage::
+          	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)$(THEOS_PACKAGE_INSTALL_PREFIX)/Library/PreferenceLoader/Preferences$(ECHO_END)
+          	$(ECHO_NOTHING)cp entry.plist $(THEOS_STAGING_DIR)$(THEOS_PACKAGE_INSTALL_PREFIX)/Library/PreferenceLoader/Preferences/2C6CPrefs.plist$(ECHO_END)
+          EOF
+
+      - name: Install Theos
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl git rsync perl xz-utils fakeroot dpkg-dev
+          yes "" | bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+
+      - name: Build DEB
+        run: |
+          export THEOS=$HOME/theos
+          make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+
+      - name: Upload DEB
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2C6C-Rootless-deb
+          path: packages/*.deb
